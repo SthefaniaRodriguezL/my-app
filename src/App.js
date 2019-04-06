@@ -14,6 +14,13 @@ class App extends React.Component {
   console.log(data);
   return data;
 }
+async getBook(id) {
+  const url = this.domain + "/global/Book/"+id;
+  const rsp = await fetch(url,{"headers":new Headers({'Authorization':'Token'+localStorage.getItem("authToken")})
+});
+  const json = await rsp.json();
+  return json;
+}
 
  render() {
    this.getBook()
